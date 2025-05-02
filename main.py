@@ -7,13 +7,21 @@ from database import get_db, Base, engine
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 import os
+from fastapi.middleware.cors import CORSMiddleware
+
 
 # Initialize
 Base.metadata.create_all(bind=engine)
 app = FastAPI()
 load_dotenv()
 
-# AWS Credentials
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Or use ["http://localhost:3000"] to restrict
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 s3 = boto3.client("s3",
     region_name=os.getenv('AWS_REGION'),
