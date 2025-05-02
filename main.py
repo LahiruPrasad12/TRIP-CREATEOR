@@ -17,9 +17,9 @@ load_dotenv()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Or use ["http://localhost:3000"] to restrict
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["*"],  # Allow all methods, or specify ['GET', 'POST', etc.]
     allow_headers=["*"],
 )
 
