@@ -30,7 +30,7 @@ s3 = boto3.client("s3",
 )
 
 
-@app.post("/upload/")
+@app.post("/upload")
 async def upload_trip_with_image(
     file: UploadFile = File(...),
     num_of_passengers: int = Form(...),
